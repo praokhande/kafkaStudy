@@ -55,3 +55,35 @@ C:\Work\kafka_2.13-3.6.1>bin\windows\kafka-console-producer.bat --broker-list lo
 
 Start Console Consumer:
 C:\Work\kafka_2.13-3.6.1>bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic prabhakar-topic --from-beginning
+
+Publish data from csv file:
+c:\kafka_2.13-3.6.1>bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic prabhakar-topic <C:\Work\kafkaStudy\users.csv
+
+************************************************************************************************************************************
+Start confluent kafka zookeeper:
+c:\Work\programs\confluent-7.6.0>bin\windows\zookeeper-server-start.bat etc\kafka\zookeeper.properties
+
+Start confluent kafka server:
+c:\Work\programs\confluent-7.6.0>bin\windows\kafka-server-start.bat etc\kafka\server.properties
+
+Create Topic:
+c:\Work\programs\confluent-7.6.0>bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic NewTopic1 --partitions 3 --replication-factor 1
+
+list out all topics:
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list --topic NewTopic1
+
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --describe --topic NewTopic1
+
+produce message:
+bin\windows\kafka-console-producer --broker-list localhost:9092 --topic NewTopic1
+
+consume message:
+bin\windows\kafka-console-consumer --bootstrap-server localhost:9092 --topic NewTopic1 --from-beginning
+
+Send CVS file data to kafka:
+bin\windows\kafka-console-producer --broker-list localhost:9092 --topic NewTopic1 <C:\Work\kafkaStudy\users.csv
+
+************************************************************************************************************************************
+Start Kafka without zookeeper: kraft: https://kafka.apache.org/quickstart
+
+
